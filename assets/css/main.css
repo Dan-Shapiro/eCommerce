@@ -2059,11 +2059,11 @@
 			line-height: 4em;
 			background: rgba(255, 255, 255, 0.15);
 			border: solid 1px;
-			border-color: #fff;
+			border-color: #000;
 			border-color: rgba(255, 255, 255, 0.75);
 			border-top: 0;
 			border-radius: 0 0 0.35em 0.35em;
-			color: #fff;
+			color: #000;
 			display: inline-block;
 			font-weight: 600;
 			letter-spacing: 3px;
