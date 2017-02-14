@@ -2963,3 +2963,21 @@
 			}
 
 	}
+
+	#hero-bullets {
+		text-align: center;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.col-md-4 {
+		text-align: center;
+		width: 33%;
+		margin: auto;
+		padding: 0;
+	}
+
+	.col-md-4 ul li {
+		padding-top: 30px;
+	}
