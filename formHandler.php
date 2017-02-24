@@ -19,24 +19,22 @@
 	$city = $_POST["City"];
 	$state = $_POST["State"];
 	$zip = $_POST["Zip"];
-	
-	//create row with data
-    $query = "insert into Users values ('$name', '$email', '$address', '$city', '$state', '$zip')";
-    $db->query($query) or die("Invalid insert: " . $db->error);
+
+	//Check user does not already exist
+	$query = "Select * from Users where Email='$email'";
+    $result = $db->query($query) or die("Invalid insert: " . $db->error);
+    $rows = $result->num_rows;
+    if($rows == 0) {
+    	//create row with data
+    	$query = "insert into Users values ('$name', '$email', '$address', '$city', '$state', '$zip')";
+    	$db->query($query) or die("Invalid insert: " . $db->error);
+    }
+    else {
+    	echo "Name exists";
+    }
 
     //go back
-    header("Location: sampleForm.html");
+    header("Location: signup.html");
 ?>
 </body>
 </html>
-
-
-
-
-<?php
-  
-  
-  
-  
-  
-?>

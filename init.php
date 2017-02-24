@@ -19,6 +19,6 @@
                         						Zip char(30) not null)") 
 												or die ("Invalid: " . $db->error);	
 	//go to homepage
-	header("Location: sampleForm.html");
+	header("Location: init.html");
 ?>
 </html>
