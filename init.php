@@ -1,7 +1,7 @@
 <?php
 	
 	//set up db
-  //$db = new mysqli('host_name', 'user_name', 'password', 'db_name');
+  	//$db = new mysqli('host_name', 'user_name', 'password', 'db_name');
 	$db = new mysqli('localhost', 'root', '', 'union');
 	if($db->connect_error):
 		die ("Could not connect to db: " . $db->connect_error);
