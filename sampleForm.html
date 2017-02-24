@@ -1,0 +1,137 @@
+<script type="text/javascript">
+	function validateForm() {
+		var my_form = document.forms["my_form"];
+
+		//check Name is not empty
+		var x = my_form["Name"].value;
+		if(x == "") {
+			alert("Name field must be filled out!");
+			return false;
+		}
+
+		//Check email is not empty, contains @ and .edu
+		x = my_form["Email"].value
+		if(x == "") {
+			alert("Email field must be filled out!");
+			return false;
+		}
+		if(!validateEmail(x)) {
+			alert("Email must be a valid .edu address!");
+		}
+
+		//Check Address is not empty
+		var x = my_form["Address"].value;
+		if(x == "") {
+			alert("Address field must be filled out!");
+			return false;
+		}
+
+		//Check City is not empty
+		var x = my_form["City"].value;
+		if(x == "") {
+			alert("City field must be filled out!");
+			return false;
+		}
+
+		//Check State is selected
+		var x = my_form["State"].value;
+		if(x == "") {
+			alert("State field must be selected!");
+			return false;
+		}
+
+		//Check zip is not empty and 5 digits
+		x = my_form["Zip"].value
+		if(x == "") {
+			alert("Zip field must be filled out!");
+			return false;
+		}
+		if(!validateZip(x)) {
+			alert("Zip must be 5 digits!");
+		}
+	}
+	
+	function validateEmail(email) {
+		//checks email is of the form:
+		//[chars]@[chars].edu
+		//from http://stackoverflow.com/questions/26702338/setting-a-form-to-only-allow-edu-email-addresses
+		var regex = /^([\w-]+(?:\.[\w-]+)*)@(?:[\w-]+\.)+edu/i;
+		return regex.test(email);
+	}
+
+	function validateZip(zip) {
+		var regex = /\b\d{5}\b/g;
+		return regex.test(zip);
+	}
+</script>
+
+<form name="my_form" onsubmit="return validateForm()" action="formHandler.php" method="post">
+	Name: <input type="text" name="Name" />
+	<br />
+	Email: <input type="text" name="Email" />
+	<br />
+	Address: <input type="text" name="Address" />
+	<br />
+	City: <input type="text" name="City" />
+	<br />
+	State: 
+	<select name="State" size="1">
+		<option value="">Select</option>
+		<option value="AK">AK</option>
+		<option value="AL">AL</option>
+		<option value="AR">AR</option>
+		<option value="AZ">AZ</option>
+		<option value="CA">CA</option>
+		<option value="CO">CO</option>
+		<option value="CT">CT</option>
+		<option value="DC">DC</option>
+		<option value="DE">DE</option>
+		<option value="FL">FL</option>
+		<option value="GA">GA</option>
+		<option value="HI">HI</option>
+		<option value="IA">IA</option>
+		<option value="ID">ID</option>
+		<option value="IL">IL</option>
+		<option value="IN">IN</option>
+		<option value="KS">KS</option>
+		<option value="KY">KY</option>
+		<option value="LA">LA</option>
+		<option value="MA">MA</option>
+		<option value="MD">MD</option>
+		<option value="ME">ME</option>
+		<option value="MI">MI</option>
+		<option value="MN">MN</option>
+		<option value="MO">MO</option>
+		<option value="MS">MS</option>
+		<option value="MT">MT</option>
+		<option value="NC">NC</option>
+		<option value="ND">ND</option>
+		<option value="NE">NE</option>
+		<option value="NH">NH</option>
+		<option value="NJ">NJ</option>
+		<option value="NM">NM</option>
+		<option value="NV">NV</option>
+		<option value="NY">NY</option>
+		<option value="OH">OH</option>
+		<option value="OK">OK</option>
+		<option value="OR">OR</option>
+		<option value="PA">PA</option>
+		<option value="RI">RI</option>
+		<option value="SC">SC</option>
+		<option value="SD">SD</option>
+		<option value="TN">TN</option>
+		<option value="TX">TX</option>
+		<option value="UT">UT</option>
+		<option value="VA">VA</option>
+		<option value="VT">VT</option>
+		<option value="WA">WA</option>
+		<option value="WI">WI</option>
+		<option value="WV">WV</option>
+		<option value="WY">WY</option>
+	</select>
+	<br />
+	Zip: <input type="text" name="Zip" />
+	<br />
+	<br />
+	<input type="submit" value="Submit" />
+</form>
