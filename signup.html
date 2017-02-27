@@ -338,14 +338,17 @@
 
 				function checkEmail(email) {
 					//Checks from db if the email is in use
+					var isTrue = false;
 					$.ajax({
 						type: "POST",
 						url: "checkEmail.php",
+						async: false,
 						data: { Email: email },
 						success: function(data) {
-							return data;
+							isTrue = data.includes("true");
 						}
 					})
+					return isTrue;
 				}
 				
 				function validateEmail(email) {

@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
 <?php
 	//connect to db
     //$db = new mysqli('host_name', 'user_name', 'password', 'db_name');
@@ -22,9 +16,10 @@
     if($rows != 0) {
     	echo "false";
     }
+    else {
+    	echo "true";
+    }
 
     //go back
-    header("Location: signup.html");
+    //header("Location: signup.html");
 ?>
-</body>
-</html>
