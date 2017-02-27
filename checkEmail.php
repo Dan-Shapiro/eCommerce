@@ -19,7 +19,4 @@
     else {
     	echo "true";
     }
-
-    //go back
-    //header("Location: signup.html");
 ?>
