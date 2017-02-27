@@ -272,6 +272,8 @@
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
@@ -294,6 +296,11 @@
 					}
 					if(!validateEmail(x)) {
 						alert("Email must be a valid .edu address!");
+					}
+
+					//Check email is not in use
+					if(!checkEmail(x)) {
+						alert("Email is already in use!");
 					}
 
 					//Check Address is not empty
@@ -326,6 +333,18 @@
 					if(!validateZip(x)) {
 						alert("Zip must be 5 digits!");
 					}
+				}
+
+				function checkEmail(email) {
+					//Checks from db if the email is in use
+					$.ajax({
+						type: "POST",
+						url: "checkEmail.php",
+						data: { Email: email },
+						success: function(data) {
+							return data;
+						}
+					})
 				}
 				
 				function validateEmail(email) {
