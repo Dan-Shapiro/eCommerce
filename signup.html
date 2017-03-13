@@ -286,6 +286,7 @@
 
 			<script type="text/javascript">
 				function validateForm() {
+					//get form from document
 					var my_form = document.forms["my_form"];
 
 					//check Name is not empty
@@ -352,7 +353,9 @@
 						type: "POST",
 						url: "checkEmail.php",
 						async: false,
+						//sends email to backend
 						data: { Email: email },
+						//receives true if email is already in db
 						success: function(data) {
 							isTrue = data.includes("true");
 						}
