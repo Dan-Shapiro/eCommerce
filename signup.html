@@ -362,9 +362,10 @@
 				}
 
 				function onlyLetters(text) {
+					//checks that text is only letters and spaces
 					var isTrue = false;
 					var regex = /^[a-zA-Z\s]*$/;  
-     				return (regex.test(text));
+     					return (regex.test(text));
 				}
 
 				function checkEmail(email) {
