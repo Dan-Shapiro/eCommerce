@@ -59,7 +59,12 @@
 
 			<!-- Main -->
 				<div class="wrapper">
+
 					<div class= "form" id="main">
+						<header>
+							<h2> <center> Sign up </center> </h2>
+						</header>
+						
 						<!-- Content -->
 						<form name="my_form" onsubmit="return validateForm()" action="formHandler.php" method="post">
 							Name: <input type="text" name="Name" />
@@ -295,6 +300,11 @@
 						alert("Name field must be filled out!");
 						return false;
 					}
+					//check name is only letters
+					if(!onlyLetters(x)){
+						alert("Name field must only be made up of letters");
+						return false;
+					}
 
 					//Check email is not empty, contains @ and .edu
 					x = my_form["Email"].value
@@ -327,6 +337,11 @@
 						return false;
 					}
 
+					//check City is only letters
+					if (!onlyLetters(x)) {
+						alert("City field must only be made up of letters");
+						return false;
+					}
 					//Check State is selected
 					var x = my_form["State"].value;
 					if(x == "") {
@@ -344,6 +359,12 @@
 						alert("Zip must be 5 digits!");
 						return false;
 					}
+				}
+
+				function onlyLetters(text) {
+					var isTrue = false;
+					var regex = /^[a-zA-Z\s]*$/;  
+     				return (regex.test(text));
 				}
 
 				function checkEmail(email) {
