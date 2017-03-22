@@ -96,7 +96,7 @@
 						?>
 
 
-						<form id="myContainer" action="startPayment.php" method="POST">
+						<form name="form1" id="myContainer" action="startPayment.php" method="POST">
 						    <input type="hidden" name="csrf" value="<?php echo($_SESSION['csrf']);?>"/>
 						    <input type="hidden" name="Service" value="<?php echo($service);?>"/>
 						    <input type="hidden" name="Price" value="<?php echo($price);?>"/>
@@ -303,9 +303,63 @@
 			   window.paypalCheckoutReady = function () {
 			       paypal.checkout.setup('unionBusiness@gmail.com', {
 			           container: 'myContainer', //{String|HTMLElement|Array} where you want the PayPal button to reside
-			           environment: 'sandbox' //or 'production' depending on your environment
+			           environment: 'sandbox', //or 'production' depending on your environment
+			           click: function(event) {
+			           		var my_form = document.forms["form1"];
+			           		if(!checkFields()){
+			           			event.preventDefault();
+			           		}
+			           }
 			       });
 			   };
+
+			    function checkFields() {
+			   		var my_form = document.forms["form1"];
+			   		
+						var x = my_form["name"].value;
+						if(x == "") {
+							alert("Name field must be filled out!");
+							return false;
+						}
+						//check name is only letters
+						if(!onlyLetters(x)){
+							alert("Name field must only be made up of letters");
+							return false;
+						}
+
+						//Check email is not empty, contains @ and .edu
+						x = my_form["email"].value
+						if(x == "") {
+							alert("Email field must be filled out!");
+							return false;
+						}
+						if(!validateEmail(x)) {
+							alert("Email must be a valid .edu address!");
+							return false;
+						}
+				   	return true;
+			    };
+
+			    function onlyLetters(text) {
+					//checks that text is only letters and spaces
+					var isTrue = false;
+					var regex = /^[a-zA-Z\s]*$/;  
+     					return (regex.test(text));
+				}
+
+			    function validateEmail(email) {
+					//Checks email is of the form:
+					//[chars]@[chars].edu
+					//from http://stackoverflow.com/questions/26702338/setting-a-form-to-only-allow-edu-email-addresses
+					//var regex = /^([\w-]+(?:\.[\w-]+)*)@(?:[\w-]+\.)+edu/i;
+					//var regex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+					
+					var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					//^^^^from http://emailregex.com/
+					return (regex.test(email) && email.substr(-4) == ".edu");
+				}
+
+			   
 			</script>
 			<script src="//www.paypalobjects.com/api/checkout.js" async></script>
 
