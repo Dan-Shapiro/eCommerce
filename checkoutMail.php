@@ -47,6 +47,8 @@
 	//send the email
 	if(!$mail->send()) {
 		echo 'Message could not be sent.';
-		echo 'Mao;er Error: ' . $amil->ErrorInfo;
+		echo 'Mailer Error: ' . $mail->ErrorInfo;
 	}
+
+	header("Location: boards.html");
 ?>
