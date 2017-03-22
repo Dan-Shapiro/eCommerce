@@ -304,15 +304,19 @@
 			       paypal.checkout.setup('unionBusiness@gmail.com', {
 			           container: 'myContainer', //{String|HTMLElement|Array} where you want the PayPal button to reside
 			           environment: 'sandbox', //or 'production' depending on your environment
+			           
+			           /*
 			           click: function(event) {
+			           	
 			           		var my_form = document.forms["form1"];
 			           		if(!checkFields()){
 			           			event.preventDefault();
 			           		}
+			           	
 			           }
+			           */
 			       });
 			   };
-
 			    function checkFields() {
 			   		var my_form = document.forms["form1"];
 			   		
@@ -345,7 +349,7 @@
 					var isTrue = false;
 					var regex = /^[a-zA-Z\s]*$/;  
      					return (regex.test(text));
-				}
+				};
 
 			    function validateEmail(email) {
 					//Checks email is of the form:
@@ -357,7 +361,7 @@
 					var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 					//^^^^from http://emailregex.com/
 					return (regex.test(email) && email.substr(-4) == ".edu");
-				}
+				};
 
 			   
 			</script>
