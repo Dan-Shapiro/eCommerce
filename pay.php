@@ -18,8 +18,8 @@
 
         if(verify_nonce()){
             $expressCheckoutFlowArray = json_decode($_SESSION['expressCheckoutPaymentData'], true);
-                    $expressCheckoutFlowArray['transactions'][0]['amount']['total'] = (float)$expressCheckoutFlowArray['transactions'][0]['amount']['total'] + (float)$_POST['shipping_method'] - (float)$expressCheckoutFlowArray['transactions'][0]['amount']['details']['shipping'];
-                    $expressCheckoutFlowArray['transactions'][0]['amount']['details']['shipping'] = $_POST['shipping_method'];
+                    //$expressCheckoutFlowArray['transactions'][0]['amount']['total'] = (float)$expressCheckoutFlowArray['transactions'][0]['amount']['total'] + (float)$_POST['shipping_method'] - (float)$expressCheckoutFlowArray['transactions'][0]['amount']['details']['shipping'];
+                    //$expressCheckoutFlowArray['transactions'][0]['amount']['details']['shipping'] = $_POST['shipping_method'];
                     $transactionAmountUpdateArray = $expressCheckoutFlowArray['transactions'][0];
                     $_SESSION['expressCheckoutPaymentData'] = json_encode($expressCheckoutFlowArray);
 

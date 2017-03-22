@@ -35,6 +35,7 @@
 
             <form action="pay.php" method="POST">
                 <input type="text" name="csrf" value="<?php echo($_SESSION['csrf']);?>" hidden readonly/>
+                <!--
                 <label>Shipping methods:</label>
                 <select class="form-control" name="shipping_method" id="shipping_method" style="width: 250px;" class="required-entry">
                     <optgroup label="United Parcel Service" style="font-style:normal;">
@@ -48,6 +49,7 @@
                         Fixed - 2.00</option>
                     </optgroup>
                 </select>
+                -->
                 <br/>
                 <button type="submit" class="btn btn-primary" onclick="return emailConf();">Confirm Order</button>
             </form>
