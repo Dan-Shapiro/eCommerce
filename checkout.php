@@ -66,11 +66,16 @@
 						</header>
 
 						<?php
+
 							require 'apiCallsData.php';
 
 							$service = $_POST["Service"];
 							$price = $_POST["Price"];
 							$user = $_POST["User"];
+
+							setcookie("service", $service, time() + (86400*30), "/");
+							setcookie("price", $price, time() + (86400*30), "/");
+							setcookie("user", $user, time() + (86400*30), "/");
 
 							$price_number = "";
 							for($i = 0; $i < strlen($price); $i++) {
@@ -94,6 +99,10 @@
 						<form id="myContainer" action="startPayment.php" method="POST">
 						    <input type="hidden" name="csrf" value="<?php echo($_SESSION['csrf']);?>"/>
 						    <input type="hidden" name="Service" value="<?php echo($service);?>"/>
+						    <input type="hidden" name="Price" value="<?php echo($price);?>"/>
+						    <input type="hidden" name="User" value="<?php echo($user);?>"/>
+						    Name: <input type="text" name="name"><br>
+						    Email: <input type="text" name="email"><br>
 						    <?php echo($service) ?> Service:<input type="text" name="service_amount" value="<?php echo($price_number) ?>" readonly></input><br>
 						    <input type="hidden" name="tax" value="0" readonly></input>
 						    <input type="hidden" name="insurance" value="0" readonly></input>

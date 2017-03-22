@@ -31,7 +31,7 @@
             <?php echo($addressLine2);?><br/>
             <?php echo($city);?><br/>
             <?php echo($state.'-'.$postalCode);?><br/>
-            <?php echo($countryCode);?>
+            <?php echo($countryCode);?><br/>
 
             <form action="pay.php" method="POST">
                 <input type="text" name="csrf" value="<?php echo($_SESSION['csrf']);?>" hidden readonly/>
@@ -49,7 +49,7 @@
                     </optgroup>
                 </select>
                 <br/>
-                <button type="submit" class="btn btn-primary">Confirm Order</button>
+                <button type="submit" class="btn btn-primary" onclick="return emailConf();">Confirm Order</button>
             </form>
             <br/>
         </div>
@@ -58,3 +58,22 @@
 <?php
     include('footer.php');
 ?>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+<script type="text/javascript">
+    function emailConf() {
+        $.ajax({
+            type: "POST",
+            url: "checkoutMail.php",
+            async: false
+        })
+    }
+</script>

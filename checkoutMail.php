@@ -9,11 +9,18 @@
 	}
 
 	//get form data
+	/*
 	$name = $_POST["name"];
 	$email = $_POST["email"];
 	$service = $_POST["service"];
 	$price = $_POST["price"];
 	$user = $_POST["user"];
+	*/
+	$name = $_COOKIE["name"];
+	$email = $_COOKIE["email"];
+	$service = $_COOKIE["service"];
+	$price = $_COOKIE["price"];
+	$user = $_COOKIE["user"];
 
 	//mail info
 	$mailpath = '../PHPMailer';

@@ -11,6 +11,9 @@
 	$access_token = getAccessToken();
 	$_SESSION['access_token'] = $access_token;
 
+        setcookie("name", $_POST["name"], time() + (86400*30), "/");
+        setcookie("email", $_POST["email"], time() + (86400*30), "/");
+
 	if(verify_nonce()){
 		if(isset($_POST['markFlow']) && $_POST['markFlow'] == "true"){ //Proceed to Checkout or Mark flow
 
