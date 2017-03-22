@@ -62,10 +62,52 @@
 						
 						<!-- Content -->
 						<header>
-							<h2> <center> Sign up </center> </h2>
+							<h2> <center> Checkout </center> </h2>
 						</header>
 
+						<?php
+							require 'apiCallsData.php';
+
+							$service = $_POST["Service"];
+							$price = $_POST["Price"];
+							$user = $_POST["User"];
+
+							$price_number = "";
+							for($i = 0; $i < strlen($price); $i++) {
+								if($price[$i] == '$') {
+									continue;
+								}
+								else if($price[$i] == '.') {
+									break;
+								}
+								else {
+									$price_number = $price_number . $price[$i];
+								}
+							}
+
+							echo "<p style='text-align:center;'>You are ordering " . $service .  " for the price of " . $price . " from " . $user . ".</p>";
+						
+							echo "<div style='width:300px;margin:0 auto;text-align:center;'>";
+						?>
+
+
+						<form id="myContainer" action="startPayment.php" method="POST">
+						    <input type="hidden" name="csrf" value="<?php echo($_SESSION['csrf']);?>"/>
+						    <input type="hidden" name="Service" value="<?php echo($service);?>"/>
+						    <?php echo($service) ?> Service:<input type="text" name="service_amount" value="<?php echo($price_number) ?>" readonly></input><br>
+						    <input type="hidden" name="tax" value="0" readonly></input>
+						    <input type="hidden" name="insurance" value="0" readonly></input>
+						    <input type="hidden" name="handling_fee" value="0" readonly></input>
+						    <input type="hidden" name="estimated_shipping" value="0" readonly></input>
+						    <input type="hidden" name="shipping_discount" value="0" readonly></input><br>
+						    <input type="hidden" name="total_amount" value="<?php echo($price_number) ?>" readonly></input>
+						    <input type="hidden" name="currencyCodeType" value="USD" readonly></input>
+						</form>
+
 						<?php 
+							echo "</form></div>";
+
+							/*
 							$service = $_POST["Service"];
 							$price = $_POST["Price"];
 							$user = $_POST["User"];
@@ -86,11 +128,14 @@
 							echo "Paypay info here";
 							echo "<br />";
 							echo "<br />";
+
+							echo "<br />";
+							echo "<br />";
 							//DELETE ^^ WHEN ADDED
 
 							echo "<input type='submit' value='Complete Purchase'>";
 							echo "</form></div>";
-
+							*/
 						?>
 
 						<!--
@@ -244,6 +289,16 @@
 
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+
+			<script type="text/javascript">
+			   window.paypalCheckoutReady = function () {
+			       paypal.checkout.setup('unionBusiness@gmail.com', {
+			           container: 'myContainer', //{String|HTMLElement|Array} where you want the PayPal button to reside
+			           environment: 'sandbox' //or 'production' depending on your environment
+			       });
+			   };
+			</script>
+			<script src="//www.paypalobjects.com/api/checkout.js" async></script>
 
 	</body>
 </html>
