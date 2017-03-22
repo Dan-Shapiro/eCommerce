@@ -1,4 +1,69 @@
-<?php
+
+<!DOCTYPE HTML>
+<!--
+    Telephasic by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>Union | Sign Up</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+    </head>
+    <body class="no-sidebar">
+        <div id="page-wrapper">
+            <!-- Header -->
+                <div id="header-wrapper">
+                    <div id="header" class="container">
+
+                        <!-- Logo -->
+                            <h1 id="logo"><a href="index.html"><img src="images/logo_trans.png" height="30px;" />nion</a></h1>
+
+                        <!-- Nav -->
+                            <nav id="nav">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                        <!--
+                                        <ul>
+                                            <li><a href="#">Lorem ipsum dolor</a></li>
+                                            <li><a href="#">Magna phasellus</a></li>
+                                            <li><a href="#">Etiam dolore nisl</a></li>
+                                            <li>
+                                                <a href="#">Phasellus consequat</a>
+                                                <ul>
+                                                    <li><a href="#">Lorem ipsum dolor</a></li>
+                                                    <li><a href="#">Phasellus consequat</a></li>
+                                                    <li><a href="#">Magna phasellus</a></li>
+                                                    <li><a href="#">Etiam dolore nisl</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Veroeros feugiat</a></li>
+                                        </ul>
+                                        -->
+                                    </li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li class="break"><a href="boards.html">Bulletin Boards</a></li>
+                                    <li><a href="signup.html">Sign Up!</a></li>
+                                </ul>
+                            </nav>
+
+                    </div>
+                </div>
+
+            <!-- Main -->
+                <div class="wrapper">
+
+                    <div class= "form" id="main">
+                        <header>
+                        </header>
+                        <?php
     /*
         * Place Order Page : part of the Express Checkout flow. Buyer can choose shipping option on this page.
     */
@@ -22,42 +87,39 @@
     $countryCode= filter_var($lookUpPaymentInfo['payer']['payer_info']['shipping_address']['country_code'],FILTER_SANITIZE_SPECIAL_CHARS);
 
 ?>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h3>Ship To :</h3>
+            <h3 style="text-align: center">Ship To :</h3>
+            </br>
+            <div style="text-align: center">
             <?php echo($recipientName);?><br/>
             <?php echo($addressLine1);?><br/>
             <?php echo($addressLine2);?><br/>
             <?php echo($city);?><br/>
             <?php echo($state.'-'.$postalCode);?><br/>
             <?php echo($countryCode);?><br/>
-
-            <form action="pay.php" method="POST">
-                <input type="text" name="csrf" value="<?php echo($_SESSION['csrf']);?>" hidden readonly/>
-                <label>Shipping methods:</label>
-                <select class="form-control" name="shipping_method" id="shipping_method" style="width: 250px;" class="required-entry">
-                    <optgroup label="United Parcel Service" style="font-style:normal;">
-                        <option value="8.00">
-                        Worldwide Expedited - 8.00</option>
-                        <option value="4.00">
-                        Worldwide Express Saver - 4.00</option>
-                    </optgroup>
-                    <optgroup label="Flat Rate" style="font-style:normal;">
-                        <option value="2.00" selected>
-                        Fixed - 2.00</option>
-                    </optgroup>
-                </select>
+            </div>
+            <form action="pay.php" method="POST" style="text-align: center">
                 <br/>
-                <button type="submit" class="btn btn-primary" onclick="return emailConf();">Confirm Order</button>
+                <button type="submit" class="btn btn-primary" onclick="return emailConf();" style="text-align: center">Confirm Order</button>
             </form>
             <br/>
-        </div>
-        <div class="col-md-4"></div>
     </div>
 <?php
     include('footer.php');
 ?>
+                        
+                    </div>
+                    </div>
+                </div>
+
+            <!-- Footer -->
+        
+                <div id="footer-wrapper" style="text-align: center;">
+                   <ul class="menu">
+                            <li>ContactUnion@gmail.com</li>
+                            <li>(233)555-3459</li>
+                        </ul>
+        </div>
+
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.dropotron.min.js"></script>
