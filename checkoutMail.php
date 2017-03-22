@@ -8,6 +8,13 @@
 		die ("Could not connect to db: " . $db->connect_error);
 	}
 
+	//get form data
+	$name = $_POST["name"];
+	$email = $_POST["email"];
+	$service = $_POST["service"];
+	$price = $_POST["price"];
+	$user = $_POST["user"];
+
 	//mail info
 	$mailpath = '../PHPMailer';
 
@@ -27,9 +34,9 @@
 
 	$sender = "Union";
 	$mail->FromName = "Union Team";
-	$subj = "You are getting an email!";
-	$receiver = "ds5ct@virginia.edu";
-	$msg = "Hey, you got this email!";
+	$subj = "Union Purchase Confirmation";
+	$receiver = $email;
+	$msg = "Hi " . $name . ",\n\nYou purchased " . $service . " from " . $user . " for " . $price . ".\n\nThank you for your order,\nUnion Team";
 
 	//put info into the message
 	$mail->addAddress($receiver);
