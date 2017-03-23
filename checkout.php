@@ -95,7 +95,7 @@
 							echo "<div style='width:300px;margin:0 auto;text-align:center;'>";
 						?>
 
-
+						<!--
 						<form name="form1" id="myContainer" action="startPayment.php" method="POST">
 						    <input type="hidden" name="csrf" value="<?php echo($_SESSION['csrf']);?>"/>
 						    <input type="hidden" name="Service" value="<?php echo($service);?>"/>
@@ -112,6 +112,26 @@
 						    <input type="hidden" name="total_amount" value="<?php echo($price_number) ?>" readonly></input>
 						    <input type="hidden" name="currencyCodeType" value="USD" readonly></input>
 						</form>
+						-->
+
+						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="business" value="unionBusiness@gmail.com">
+
+							<input type="hidden" name="item_name" value="<?php echo($service); ?>">
+							<input type="hidden" name="amount" value="<?php echo($price_number); ?>">
+							<input type="hidden" name="currency_code" value="USD">
+							<input type="hidden" name="quantity" value="1">
+							<input type="hidden" name="return" value="http://localhost/CS4753/CS4753/boards.html">
+							<input type="hidden" name="cancel_return" value="http://localhost/CS4753/CS4753/boards.html">
+
+							<input type="hidden" name="cmd" value="_xclick">
+							<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+
+
+
+						<!--<a class="button" href="#" onclick="validateFields()">Validate Fields</a>-->
 
 						<?php 
 							echo "</form></div>";
@@ -300,6 +320,10 @@
 			<script src="assets/js/main.js"></script>
 
 			<script type="text/javascript">
+			function validateFields() {
+
+			}
+
 			   window.paypalCheckoutReady = function () {
 			       paypal.checkout.setup('unionBusiness@gmail.com', {
 			           container: 'myContainer', //{String|HTMLElement|Array} where you want the PayPal button to reside
@@ -365,7 +389,7 @@
 
 			   
 			</script>
-			<script src="//www.paypalobjects.com/api/checkout.js" async></script>
+			<!--<script src="//www.paypalobjects.com/api/checkout.js" async></script>-->
 
 	</body>
 </html>

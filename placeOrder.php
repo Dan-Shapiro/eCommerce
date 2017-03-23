@@ -88,7 +88,7 @@
 
 ?>
             <h3 style="text-align: center">Ship To :</h3>
-            </br>
+            <br/>
             <div style="text-align: center">
             <?php echo($recipientName);?><br/>
             <?php echo($addressLine1);?><br/>
@@ -99,7 +99,7 @@
             </div>
             <form action="pay.php" method="POST" style="text-align: center">
                 <br/>
-                <button type="submit" class="btn btn-primary" onclick="return emailConf();" style="text-align: center">Confirm Order</button>
+                <button type="submit" class="btn btn-primary" onclick="return emailConf();" style="text-align:center;">Confirm Order</button>
             </form>
             <br/>
     </div>
