@@ -66,95 +66,29 @@
                         <?php
                                 if (session_id() == "")
                                     session_start();
-
                                 include('header.php');
                             ?>
-                                <div class="row" style="text-align:center;">
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-4">
                                         <h4 style="text-align:center;">
                                             You cancelled the order.
-                                        </h4>
+                                        
                                         <br/>
                                         Return to <a href="index.html">home page</a>.
-                                    </div>
-                                    <div class="col-md-4"></div>
-                                </div>
+                                        </h4>
                             <?php
-                                //include('footer.php');
+                                include('footer.php');
                             ?>
                         
-                    </div>
                     </div>
                 </div>
 
             <!-- Footer -->
-                <!--
-                <div id="footer-wrapper">
-                    <div id="footer" class="container">
-                        <header class="major">
-                            <h2>Euismod aliquam vehicula lorem</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel sem sit<br />
-                            dolor neque semper magna lorem ipsum feugiat veroeros lorem ipsum dolore.</p>
-                        </header>
-                        <div class="row">
-                            <section class="6u 12u(narrower)">
-                                <form method="post" action="#">
-                                    <div class="row 50%">
-                                        <div class="6u 12u(mobile)">
-                                            <input name="name" placeholder="Name" type="text" />
-                                        </div>
-                                        <div class="6u 12u(mobile)">
-                                            <input name="email" placeholder="Email" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="row 50%">
-                                        <div class="12u">
-                                            <textarea name="message" placeholder="Message"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row 50%">
-                                        <div class="12u">
-                                            <ul class="actions">
-                                                <li><input type="submit" value="Send Message" /></li>
-                                                <li><input type="reset" value="Clear form" /></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </form>
-                            </section>
-                            <section class="6u 12u(narrower)">
-                                <div class="row 0%">
-                                    <ul class="divided icons 6u 12u(mobile)">
-                                        <li class="icon fa-twitter"><a href="#"><span class="extra">twitter.com/</span>untitled</a></li>
-                                        <li class="icon fa-facebook"><a href="#"><span class="extra">facebook.com/</span>untitled</a></li>
-                                        <li class="icon fa-dribbble"><a href="#"><span class="extra">dribbble.com/</span>untitled</a></li>
-                                    </ul>
-                                    <ul class="divided icons 6u 12u(mobile)">
-                                        <li class="icon fa-instagram"><a href="#"><span class="extra">instagram.com/</span>untitled</a></li>
-                                        <li class="icon fa-youtube"><a href="#"><span class="extra">youtube.com/</span>untitled</a></li>
-                                        <li class="icon fa-pinterest"><a href="#"><span class="extra">pinterest.com/</span>untitled</a></li>
-                                    </ul>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                    <div id="copyright" class="container">
-                        <ul class="menu">
-                            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                        </ul>
-                    </div>
-                </div>
-                -->
 
-        </div>
-
-        <div id="copyright" class="container" style="margin-top:-100px;">
-                        <ul class="menu">
+                <div id="footer-wrapper" style="text-align: center">
+                         <ul class="menu">
                             <li>ContactUnion@gmail.com</li>
                             <li>(233)555-3459</li>
                         </ul>
-                    </div>
+                </div>
 
         <!-- Scripts -->
 
@@ -171,7 +105,6 @@
                 function validateForm() {
                     //get form from document
                     var my_form = document.forms["my_form"];
-
                     //check Name is not empty
                     var x = my_form["Name"].value;
                     if(x == "") {
@@ -183,7 +116,6 @@
                         alert("Name field must only be made up of letters");
                         return false;
                     }
-
                     //Check email is not empty, contains @ and .edu
                     x = my_form["Email"].value
                     if(x == "") {
@@ -194,27 +126,23 @@
                         alert("Email must be a valid .edu address!");
                         return false;
                     }
-
                     //Check email is not in use
                     if(!checkEmail(x)) {
                         alert("Email is already in use!");
                         return false;
                     }
-
                     //Check Address is not empty
                     var x = my_form["Address"].value;
                     if(x == "") {
                         alert("Address field must be filled out!");
                         return false;
                     }
-
                     //Check City is not empty
                     var x = my_form["City"].value;
                     if(x == "") {
                         alert("City field must be filled out!");
                         return false;
                     }
-
                     //check City is only letters
                     if (!onlyLetters(x)) {
                         alert("City field must only be made up of letters");
@@ -226,7 +154,6 @@
                         alert("State field must be selected!");
                         return false;
                     }
-
                     //Check zip is not empty and 5 digits
                     x = my_form["Zip"].value
                     if(x == "") {
@@ -238,14 +165,12 @@
                         return false;
                     }
                 }
-
                 function onlyLetters(text) {
                     //checks that text is only letters and spaces
                     var isTrue = false;
                     var regex = /^[a-zA-Z\s]*$/;  
                         return (regex.test(text));
                 }
-
                 function checkEmail(email) {
                     //Checks from db if the email is in use
                     var isTrue = false;
@@ -274,7 +199,6 @@
                     //^^^^from http://emailregex.com/
                     return (regex.test(email) && email.substr(-4) == ".edu");
                 }
-
                 function validateZip(zip) {
                     //Checks zip is exactly 5 digits
                     var regex = /\b\d{5}\b/g;
