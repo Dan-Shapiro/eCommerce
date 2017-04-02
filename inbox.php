@@ -71,7 +71,7 @@
 										-->
 									</li>
 									<li><a href="inbox.php">Inbox</a></li>
-									<li class="break"><a href="boards2.-h-">Bulletin Boards</a></li>
+									<li class="break"><a href="boards2.php">Bulletin Boards</a></li>
 									<li><a href="logout.php">Log Out</a></li>
 								</ul>
 							</nav>
