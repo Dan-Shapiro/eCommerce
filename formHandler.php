@@ -5,6 +5,8 @@
 </head>
 <body>
 <?php
+	session_start();
+
 	//connect to db
     //$db = new mysqli('host_name', 'user_name', 'password', 'db_name');
 	$db = new mysqli('localhost', 'root', '', 'union');
@@ -68,6 +70,9 @@
     else {
     	echo "Name exists";
     }
+
+    //set session variable
+    $_SESSION['good'] = "good";
 
     //go back
     header("Location: index2.html");

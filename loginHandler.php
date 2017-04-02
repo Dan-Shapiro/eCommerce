@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
 	//connect to db
     //$db = new mysqli('host_name', 'user_name', 'password', 'db_name');
 	$db = new mysqli('localhost', 'root', '', 'union');
@@ -23,6 +25,9 @@
     	echo "false";
     }
     else {
+        //set sessions variable
+        $_SESSION['good'] = "good";
+
     	echo "true";
     }
 
