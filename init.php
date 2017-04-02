@@ -11,7 +11,8 @@
 	$db->query("drop table Users");
 	
 	//create table
-	$result = $db->query("create table Users	(Name char(30) not null, 
+	$result = $db->query("create table Users	(Name char(30) not null,
+												Password char(30) not null, 
 												Email char(30) not null, 
 												Address char(60) not null, 
 												City char(30) not null,

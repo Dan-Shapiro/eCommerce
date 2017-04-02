@@ -14,6 +14,7 @@
 	}
 
 	$name = $_POST["Name"];
+	$pass = $_POST["Pass"];
 	$email = $_POST["Email"];
 	$address = $_POST["Address"];
 	$city = $_POST["City"];
@@ -22,11 +23,11 @@
 
 	//Check user does not already exist
 	$query = "Select * from Users where Email='$email'";
-    $result = $db->query($query) or die("Invalid insert: " . $db->error);
+    $result = $db->query($query) or die("Invalid: " . $db->error);
     $rows = $result->num_rows;
     if($rows == 0) {
     	//create row with data
-    	$query = "insert into Users values ('$name', '$email', '$address', '$city', '$state', '$zip')";
+    	$query = "insert into Users values ('$name', '$pass', '$email', '$address', '$city', '$state', '$zip')";
     	$db->query($query) or die("Invalid insert: " . $db->error);
 
     	//mail info

@@ -69,6 +69,8 @@
 						<form name="my_form" onsubmit="return validateForm()" action="formHandler.php" method="post">
 							Name: <input type="text" name="Name" />
 							<br />
+							Password: <input type="password" name="Pass">
+							<br />
 							Email: <input type="text" name="Email" />
 							<br />
 							Address: <input type="text" name="Address" />
@@ -303,6 +305,13 @@
 					//check name is only letters
 					if(!onlyLetters(x)){
 						alert("Name field must only be made up of letters");
+						return false;
+					}
+
+					//check Password is not empty
+					var x = my_form["Pass"].value;
+					if(x == "") {
+						alert("Password field must be filled out!");
 						return false;
 					}
 
