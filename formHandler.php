@@ -75,7 +75,7 @@
     $_SESSION['good'] = "good";
 
     //go back
-    header("Location: index2.html");
+    header("Location: index2.php");
 ?>
 </body>
 </html>

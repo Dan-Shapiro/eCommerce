@@ -1,3 +1,12 @@
+<?php
+	session_start();
+
+	if(!isset($_SESSION['good']))
+	{
+		header("Location: notallowed.php");
+	}
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Telephasic by HTML5 UP
@@ -6,7 +15,7 @@
 -->
 <html>
 	<head>
-		<title>Union | Login</title>
+		<title>Union | Make a post!</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -23,13 +32,13 @@
 					<div id="header" class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html"><img src="images/logo_trans.png" height="30px;" />nion</a></h1>
+							<h1 id="logo"><a href="index2.php">Member's<img src="images/logo_trans.png" height="30px;" />nion</a></h1>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
 									<li>
-										<a href="index.html">Home</a>
+										<a href="index2.html">Home</a>
 										<!--
 										<ul>
 											<li><a href="#">Lorem ipsum dolor</a></li>
@@ -48,9 +57,9 @@
 										</ul>
 										-->
 									</li>
-									<li><a href="about.html">About</a></li>
+									<li><a href="inbox.html">Inbox</a></li>
 									<li class="break"><a href="boards.html">Bulletin Boards</a></li>
-									<li><a href="login.html">Login!</a></li>
+									<li><a href="logout.php">Log Out</a></li>
 								</ul>
 							</nav>
 
@@ -62,23 +71,23 @@
 
 					<div class= "form" id="main">
 						<header>
-							<h2> <center> Login </center> </h2>
+							<h2> <center> Make a post! </center> </h2>
 						</header>
 						
 						<!-- Content -->
-						<form name="my_form" onsubmit="return validateForm()" action="index2.php" method="post">
-							Email: <input type="text" name="Email" />
+						<form name="my_form" onsubmit="return validateForm()" action="formHandler.php" method="post">
+							Name: <input type="text" name="NamePost" />
 							<br />
-							Password: <input type="password" name="Pass">
+							Service: <input type="text" name="Service" />
+							<br />
+							Description: <textarea rows="5" name="Description"> </textarea> 
+							<br />
+							Price: <input type="text" name="Price"/>
+							<br />
 							<br />
 							<br />
 							<input type="submit" value="Submit" style="margin-left: 80px;" />
 						</form>
-
-						<br />
-						<br />
-						<h1 style="text-align:center;">New to Union? Sign up here!</h1>
-						<a href="signup.html" class="button" style="text-align:center;margin-left: 75px;">Sign up!</a>
 
 						<!--
 							<article id="content">
@@ -97,7 +106,6 @@
 								Praesent mollis nisi at vestibulum aliquet. Sed sagittis congue urna ac consectetur.</p>
 								<p>Mauris eleifend eleifend felis aliquet ornare. Vestibulum porta velit at elementum
 								gravida nibh eget, volutpat odio. Proin rhoncus, sapien
-								mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum
 								condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus
 								ante non est. Nullam vitae feugiat libero, eu consequat sem. Proin tincidunt neque
 								eros. Duis faucibus blandit ligula, mollis commodo risus sodales at. Sed rutrum et
@@ -237,6 +245,18 @@
 					//get form from document
 					var my_form = document.forms["my_form"];
 
+					//check Name is not empty
+					var x = my_form["Name"].value;
+					if(x == "") {
+						alert("Name field must be filled out!");
+						return false;
+					}
+					//check name is only letters
+					if(!onlyLetters(x)){
+						alert("Name field must only be made up of letters");
+						return false;
+					}
+
 					//Check email is not empty, contains @ and .edu
 					x = my_form["Email"].value
 					if(x == "") {
@@ -248,22 +268,46 @@
 						return false;
 					}
 
-					//Check email exists
-					if(checkEmail(x)) {
-						alert("Email does not exist!");
+					//Check email is not in use
+					if(!checkEmail(x)) {
+						alert("Email is already in use!");
 						return false;
 					}
 
-					//check Password is not empty
-					var x = my_form["Pass"].value;
+					//Check Address is not empty
+					var x = my_form["Address"].value;
 					if(x == "") {
-						alert("Password field must be filled out!");
+						alert("Address field must be filled out!");
 						return false;
 					}
 
-					//Check password is correct
-					if(!checkPass(my_form["Email"].value, x)) {
-						alert("Password incorrect!");
+					//Check City is not empty
+					var x = my_form["City"].value;
+					if(x == "") {
+						alert("City field must be filled out!");
+						return false;
+					}
+
+					//check City is only letters
+					if (!onlyLetters(x)) {
+						alert("City field must only be made up of letters");
+						return false;
+					}
+					//Check State is selected
+					var x = my_form["State"].value;
+					if(x == "") {
+						alert("State field must be selected!");
+						return false;
+					}
+
+					//Check zip is not empty and 5 digits
+					x = my_form["Zip"].value
+					if(x == "") {
+						alert("Zip field must be filled out!");
+						return false;
+					}
+					if(!validateZip(x)) {
+						alert("Zip must be 5 digits!");
 						return false;
 					}
 				}
@@ -291,24 +335,6 @@
 					})
 					return isTrue;
 				}
-
-				function checkPass(email, pass) {
-					//Checks from db if the email is in use
-					var isTrue = false;
-					$.ajax({
-						type: "POST",
-						url: "loginHandler.php",
-						async: false,
-						//sends email to backend
-						data: { Email: email,
-								Pass: pass },
-						//receives true if email is already in db
-						success: function(data) {
-							isTrue = data.includes("true");
-						}
-					})
-					return isTrue;
-				}
 				
 				function validateEmail(email) {
 					//Checks email is of the form:
@@ -320,6 +346,12 @@
 					var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 					//^^^^from http://emailregex.com/
 					return (regex.test(email) && email.substr(-4) == ".edu");
+				}
+
+				function validateZip(zip) {
+					//Checks zip is exactly 5 digits
+					var regex = /\b\d{5}\b/g;
+					return regex.test(zip);
 				}
 			</script>
 
