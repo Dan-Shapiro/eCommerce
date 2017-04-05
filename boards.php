@@ -1,3 +1,12 @@
+<?php
+	session_start();
+
+	if(isset($_SESSION['good']))
+	{
+		header("Location: boards2.php");
+	}
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Telephasic by HTML5 UP
@@ -62,7 +71,7 @@
 										-->
 									</li>
 									<li><a href="about.html">About</a></li>
-									<li class="break"><a href="boards.html">Bulletin Boards</a></li>
+									<li class="break"><a href="boards.php">Bulletin Boards</a></li>
 									<li><a href="login.html">Login!</a></li>
 								</ul>
 							</nav>

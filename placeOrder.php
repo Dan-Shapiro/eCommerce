@@ -49,7 +49,7 @@
                                         -->
                                     </li>
                                     <li><a href="about.html">About</a></li>
-                                    <li class="break"><a href="boards.html">Bulletin Boards</a></li>
+                                    <li class="break"><a href="boards.php">Bulletin Boards</a></li>
                                     <li><a href="signup.html">Sign Up!</a></li>
                                 </ul>
                             </nav>

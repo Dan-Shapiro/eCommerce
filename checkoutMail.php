@@ -57,5 +57,5 @@
 		echo 'Mailer Error: ' . $mail->ErrorInfo;
 	}
 
-	header("Location: boards.html");
+	header("Location: boards.php");
 ?>

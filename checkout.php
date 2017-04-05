@@ -49,7 +49,7 @@
 										-->
 									</li>
 									<li><a href="about.html">About</a></li>
-									<li class="break"><a href="boards.html">Bulletin Boards</a></li>
+									<li class="break"><a href="boards.php">Bulletin Boards</a></li>
 									<li><a href="signup.html">Sign Up!</a></li>
 								</ul>
 							</nav>
@@ -121,8 +121,8 @@
 							<input type="hidden" name="amount" value="<?php echo($price_number); ?>">
 							<input type="hidden" name="currency_code" value="USD">
 							<input type="hidden" name="quantity" value="1">
-							<input type="hidden" name="return" value="http://localhost/CS4753/CS4753/boards.html">
-							<input type="hidden" name="cancel_return" value="http://localhost/CS4753/CS4753/boards.html">
+							<input type="hidden" name="return" value="http://localhost/CS4753/CS4753/boards.php">
+							<input type="hidden" name="cancel_return" value="http://localhost/CS4753/CS4753/boards.php">
 
 							<input type="hidden" name="cmd" value="_xclick">
 							<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
