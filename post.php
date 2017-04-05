@@ -38,7 +38,7 @@
 							<nav id="nav">
 								<ul>
 									<li>
-										<a href="index2.html">Home</a>
+										<a href="index2.php">Home</a>
 										<!--
 										<ul>
 											<li><a href="#">Lorem ipsum dolor</a></li>
@@ -57,7 +57,7 @@
 										</ul>
 										-->
 									</li>
-									<li><a href="inbox.html">Inbox</a></li>
+									<li><a href="inbox.php">Inbox</a></li>
 									<li class="break"><a href="boards.html">Bulletin Boards</a></li>
 									<li><a href="logout.php">Log Out</a></li>
 								</ul>
